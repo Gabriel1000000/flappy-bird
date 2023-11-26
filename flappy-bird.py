@@ -195,14 +195,14 @@ def main():
             if evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_SPACE:
                    for passaro in passaros:
-                        passaro.pular()
+                        passaro.pula()
         
         # Mover as coisas
         for passaro in passaros:
             passaro.mover()
         chao.mover()
 
-        adicionar_chao = False
+        adicionar_cano = False
         remover_canos = []
         for cano in canos:
             for i, passaro in enumerate(passaros):
@@ -210,12 +210,12 @@ def main():
                     passaros.pop(i)
                 if not cano.passou and passaro.x > cano.x:
                     cano.passou = True
-                    adicionar_chao = True
+                    adicionar_cano = True
             cano.mover()
             if cano.x + cano.CANO_TOPO.get_width() <0:
                 remover_canos.append(cano)
 
-        if adicionar_chao:
+        if adicionar_cano:
             pontos += 1
             canos.append(Cano(600))
         for cano in remover_canos:
